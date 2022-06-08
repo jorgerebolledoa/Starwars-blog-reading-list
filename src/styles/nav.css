@@ -1,9 +1,14 @@
 nav{
     background: black;
 }
+.img_st{
+    width: 200px;
+    height: 200px;
+}
 i{
     font-size: 30px;
     padding: 10px;
+    color: #6c757d ;
 }   
 .container_icon{
     margin: 0;
