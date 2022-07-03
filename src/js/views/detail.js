@@ -1,50 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Card from "../component/Card";
+
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 export const Detail = () => {
-  const { uid } = useParams();
-
-  useEffect(() => { }, []);
-  
-  const [lista, setlista] = useState([]);
-
-	const urlApi = "https://www.swapi.tech/api/planets/" +uid
-	useEffect(() => {
-		getTask(urlApi);
-	}, []);
-
-	const getTask = (url) => {
-		fetch(url)
-			.then((Response) => Response.json())
-			.then((data) => {
-				console.log(data);
-				setlista(data);
-			})
-			.catch((error) => console.log(error));
-	};
-    
-	let peopleList = lista.results?.map((tastk, index) => {
-		return (
-			<div className="col-2 p-2" key={tastk.uid}>
-				<Card
-				img="https://seeklogo.com/images/S/Star_Wars-logo-B06952A462-seeklogo.com.png"
-				title={tastk.name}
-				text={tastk.description}
-				linkbtn={"/planets/" + tastk.uid}
-				textbtn="learn more"
-			/>
-			</div>
-		);
-	});
-
-	return (
-		<>
-			<h1 className="title text-center">Planets of Star Wars</h1>
-			<div className=" container-fluid p-2 container_people row scrolling-wrapper ">
-				{peopleList}
-			</div>
-
-
-		</>
-	);
-}
+  const { store, actions } = useContext(Context);
+  const params = useParams();
+  const name = store.singlePlanet?.result.properties.name
+  const climate = store.singlePlanet?.result.properties.climate
+  const diameter = store.singlePlanet?.result.properties.diameter
+  const gravity = store.singlePlanet?.result.properties.gravity
+  const population = store.singlePlanet?.result.properties.population
+  const terrain = store.singlePlanet?.result.properties.terrain
+  const orbitalPeriod = store.singlePlanet?.result.properties.orbital_period
+  useEffect(() => {
+    actions.getSinglePlanet(params.uid);
+  }, []);
+  // console.log(store.planets.results[0].name)
+  return (
+    <>
+      <h1 className="title text-center">
+        {store.singlePlanet?.result.properties.name}
+      </h1>
+      <div className="itemDescription">
+          <p className="card paragraph">{name} is a planet with a population of {population} sentient habitants. <br /> With the terrain being mostly {terrain} and other tiny variations, the planet has a diameter of {diameter} kms, an orbital period of {orbitalPeriod} days and a gravity index of {gravity} units.<br /> The climate on this planet is {climate}, so make sure to plan your journey accordingly.</p>
+      </div>
+      
+    </>
+  );
+};

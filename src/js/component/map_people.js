@@ -26,7 +26,7 @@ export const People = () => {
 				img="https://seeklogo.com/images/S/Star_Wars-logo-B06952A462-seeklogo.com.png"
 				title={tastk.name}
 				text={tastk.description_1}
-				linkbtn={"/producto/" + tastk.id}
+				linkbtn={"/producto/" + tastk.uid}
 				textbtn="learn more"
 			/>
 			</div>
