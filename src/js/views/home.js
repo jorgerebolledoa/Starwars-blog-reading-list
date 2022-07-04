@@ -8,9 +8,9 @@ export const Home = () => {
 	
 	return (
 		<>
-		<People/>
+		{/* <People/> */}
 		<Planets/>
-		<Starships/>
+		{/* <Starships/> */}
 		</>
 	);
 };

@@ -17,14 +17,17 @@ export const Detail = () => {
   useEffect(() => {
     actions.getSinglePlanet(params.uid);
   }, []);
-  // console.log(store.planets.results[0].name)
   return (
     <>
       <h1 className="title text-center">
         {store.singlePlanet?.result.properties.name}
       </h1>
       <div className="itemDescription">
-          <p className="card paragraph">{name} is a planet with a population of {population} sentient habitants. <br /> With the terrain being mostly {terrain} and other tiny variations, the planet has a diameter of {diameter} kms, an orbital period of {orbitalPeriod} days and a gravity index of {gravity} units.<br /> The climate on this planet is {climate}, so make sure to plan your journey accordingly.</p>
+          <p className="card paragraph">
+            {name} is a planet with a population of {population} sentient habitants.
+           <br /> With the terrain being mostly {terrain} and other tiny variations, the planet has a diameter of {diameter} kms, 
+           an orbital period of {orbitalPeriod} days and a gravity index of {gravity} units.
+           <br /> The climate on this planet is {climate}, so make sure to plan your journey accordingly.</p>
       </div>
       
     </>
