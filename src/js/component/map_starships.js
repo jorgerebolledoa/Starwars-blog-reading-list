@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import Card from "../component/Card";
 import "../../styles/home.css"
+import { Context } from "../store/appContext";
 export const Starships = () => {
+	const { store, actions } = useContext(Context);
 	const [lista, setlista] = useState([]);
 
 	const urlApi = "https://www.swapi.tech/api/starships"
@@ -22,13 +24,18 @@ export const Starships = () => {
 	let peopleList = lista.results?.map((tastk, index) => {
 		return (
 			<div className="col-2 p-2" key={tastk.uid}>
-				<Card
-				img="https://seeklogo.com/images/S/Star_Wars-logo-B06952A462-seeklogo.com.png"
-				title={tastk.name}
-				text={tastk.description_1}
-				linkbtn={"/planets/" + tastk.uid}
-				textbtn="learn more"
-			/>
+				<div className="card">
+					<img src="https://seeklogo.com/images/S/Star_Wars-logo-B06952A462-seeklogo.com.png" className="card-img-top " />
+					<div className="card-body">
+						<h5 className="card-title">{tastk.name} </h5>
+						<p className="card-text">{tastk.description_1}</p>
+						<a href={"/starships/" + tastk.uid} className="btn btn-primary">
+							learn more
+						</a>
+						<small className="text-muted float-end"><i className={store.favorite.includes(tastk.name) ? "far fa-star" : "far fa-star"} onClick={() => actions.addFavorite(tastk.name)}></i></small>
+					</div>
+
+				</div>
 			</div>
 		);
 	});
