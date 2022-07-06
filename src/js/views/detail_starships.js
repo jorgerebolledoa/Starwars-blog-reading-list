@@ -18,7 +18,6 @@ export const VehicleDetails = () => {
   useEffect(() => {
     actions.getSingleVehicle(params.uid);
   }, []);
-  
   return (
     <>
       <h1 className="title text-center">
@@ -27,8 +26,8 @@ export const VehicleDetails = () => {
       <div className="itemDescription">
           <p className="card paragraph">{name}, model: {model} is a {vehicle_class} class ship, his lenght is {length}''. <br /> 
           The ship costs $ {cost_in_credits} and the manufacturer is {manufacturer}. <br />
-          <hr />
-          <h2>Capacity:</h2> <br />
+          <br />
+          </p><h2>Capacity:</h2><p> <br />
         crew: {crew}. <br />
         passengers: {passengers}. <br />
         Cargo: {cargo_capacity}. <br />

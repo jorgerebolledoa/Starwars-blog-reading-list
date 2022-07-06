@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getSingleVehicle: (id) => {
-				fetch("https://www.swapi.tech/api/vehicles/" + id)
+				fetch("https://www.swapi.tech/api/starships/" + id)
 					.then((response) => response.json())
 					.then((data) => {
 						console.log(data);
