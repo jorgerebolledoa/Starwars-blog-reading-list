@@ -24,6 +24,7 @@ export const Navbar = () => {
 				Favorites {store.favorite.length}
 				</button>
 				<ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+				
 				{!!store.favorite.length !== 0 &&
 				store.favorite.map((valor, index) => {
 					return (

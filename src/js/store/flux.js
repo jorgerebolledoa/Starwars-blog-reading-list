@@ -72,6 +72,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						});
 					});
 			},
+			getSinglePeople: (id) => {
+				fetch("https://www.swapi.tech/api/people/" + id)
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data);
+						setStore({ singlePeople: data })
+					});
+
+			},
 			addFavorite: (personaje) => {
 				if (getStore().favorite.includes(personaje)) {
 					alert("Ya se encuentra en tus favoritos")
@@ -93,6 +102,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			saveFav: () => {
 				localStorage.setItem('lista', JSON.stringify(getStore().favorite))
 			},
+			getList:() => {
+				if(localStorage.getItem('lista')){
+					let data =localStorage.getItem('lista');
+					setStore({favorite:JSON.parse(data)})
+				}
+			}
 		},
 	};
 };

@@ -29,7 +29,7 @@ export const People = () => {
 					<div className="card-body">
 						<h5 className="card-title">{tastk.name} </h5>
 						<p className="card-text">{tastk.description_1}</p>
-						<a href={"/people/" + tastk.uid} className="btn btn-primary">
+						<a href={"/peoples/" + tastk.uid} className="btn btn-primary">
 							learn more
 						</a>
 						<small className="text-muted float-end"><i className={store.favorite.includes(tastk.name) ? "far fa-star" : "far fa-star"} onClick={() => actions.addFavorite(tastk.name)}></i></small>
